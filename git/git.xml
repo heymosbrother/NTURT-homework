@@ -1,1 +1,16 @@
-
+<!-- git.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<git>
+    <task1>
+        4a6d657a20d8552ea8cc0fea3090269cb159850ba94f6c5c02b0ce4560b98059
+    </task1>
+    <task2>
+        ed157486b875d92c25c90df1c09bafd0c9455035a3f800abc513545af7d48e3d
+    </task2>
+    <task3>
+        bbc5e661e106c6dcd8dc6dd186454c2fcba3c710fb4d8e71a60c93eaf077f073
+    </task3>
+    <task4>
+        ad936fcbed631fa67e05c3ea03953905221c9d46af0616b70badf105a966fb11
+    </task4>
+</git>
