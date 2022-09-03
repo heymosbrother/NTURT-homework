@@ -1,60 +1,64 @@
 #include "ros/ros.h"
 #include "std_msgs/Int8.h"
-#include "std_msgs/String.h"
-#include <vector>
+
 #include <math.h>
 #include <string>
-using namespace std;
 
-/**
- * @brief This is the ROS subscriber node for decryption
- */
+using namespace std;
 
 /**
  * A global array to store the received number and a global index for that array
  */
-int globalIndex = 0;
-std_msgs::Int8 dataArr[10000];
+int counter = 0;
+int dataArr[440];
 /**
- * This function is used to decrypt and sending out the result
- * @param num - the received ASCII number
+ * @brief Decrypt and sending out the result
+ * @param msg - the received ASCII number plus 3
  */
-void decryptFunc(const std_msgs::Int8::ConstPtr& msg)
+void decryptFunc(const std_msgs::Int8::ConstPtr &msg)
 {
-    std_msgs::Int8 num;
-    // num = msg->data;
-    dataArr[globalIndex] = msg.data;
-    string originalMsg;
-    int b = ceil(sqrt(globalIndex));
-    int a = floor(sqrt(globalIndex));
+    dataArr[counter] = (int)(msg->data);
+    // Print the received message on terminal
+    ROS_INFO("[%d]\tReceived, #%d,\ttransform to [%c]", msg->data, counter + 1, dataArr[counter] - 3);
+    counter++;
 
-    // Create and fill the Matrix with Encrypted message
-    char matrix[a][b];
-
-    int index = 0; // Track the unfilled numbers
-    for (int j = 0; j < b; j++)
+    if (counter >= 440)
     {
-        for (int i = 0; i < a; i++)
+        string originalMsg = "";
+
+        int b = ceil(sqrt(440));
+        int a = floor(sqrt(440));
+
+        if(a*b<440) a++;
+
+        // Create and fill the Matrix with Encrypted message
+        char matrix[a][b];
+
+        int index = 0; // Track the unfilled numbers
+        for (int j = 0; j < b; j++)
         {
-            if (index < globalIndex)
+            for (int i = 0; i < a; i++)
             {
-                matrix[j][i] = (char)(num - std_msgs::Int8::3);
+                if (index < counter)
+                {
+                    matrix[j][i] = dataArr[index] - 3;
+                }
+                index++;
             }
-            index++;
         }
-    }
 
-    // Read and store the decrypted message
-    for (int j = 0; j < a; j++)
-    {
-        for (int i = 0; i < b; i++)
+        // Read and store the decrypted message
+        for (int j = 0; j < a; j++)
         {
-            originalMsg = originalMsg + matrix[i][j];
+            for (int i = 0; i < b; i++)
+            {
+                originalMsg = originalMsg + matrix[i][j];
+            }
         }
-    }
 
-    // Print the decrypted message on ROS terminal
-    ROS_INFO("Decrypted Message: [%s]", originalMsg.c_str());
+        // Print out the decrypted message on the terminal
+        ROS_INFO("a = %d, b = %d, Decrypted Message: \n%s", a, b, originalMsg.c_str());
+    }
 }
 
 int main(int argc, char **argv)

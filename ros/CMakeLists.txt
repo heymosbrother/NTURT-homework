@@ -10,7 +10,7 @@ project(roshw)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
-  genmsg
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -47,11 +47,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  decryp_msg.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -105,7 +104,8 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES roshw
-#  CATKIN_DEPENDS roscpp std_msgs
+ CATKIN_DEPENDS roscpp std_msgs
+ message_runtime
 #  DEPENDS system_lib
 )
 
@@ -146,9 +146,10 @@ add_executable(decrypt_node src/decrypt_node.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(
+  decrypt_node
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
