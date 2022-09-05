@@ -14,7 +14,7 @@ private:
     ros::NodeHandle nh;
     ros::Publisher pub;
     ros::Subscriber sub;
-    int dataArr[440];
+    int dataArr[441];
     int counter = 0;
     string originalMsg = "";
 
@@ -37,7 +37,7 @@ public:
         // Print the received message on terminal
         // ROS_INFO("[%d]\tReceived, #%d,\ttransform to [%c]", msg->data, counter + 1, dataArr[counter] - 3);
         counter++;
-        if (counter >= 440)
+        if (counter == 440)
             decryptMsg();
     }
 
@@ -70,11 +70,16 @@ public:
         }
 
         // Read and store the decrypted message
+        int makeStrIndex = 0;
         for (int j = 0; j < a; j++)
         {
             for (int i = 0; i < b; i++)
             {
-                originalMsg = originalMsg + matrix[i][j];
+                if(makeStrIndex < 440)
+                {
+                    originalMsg = originalMsg + matrix[i][j];
+                    makeStrIndex++;
+                } 
             }
         }
 
