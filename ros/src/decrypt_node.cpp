@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// So weird
+
 class SubscribeAndPublish
 {
 private:
