@@ -8,15 +8,13 @@
 
 using namespace std;
 
-// So weird
-
 class SubscribeAndPublish
 {
 private:
     ros::NodeHandle nh;
     ros::Publisher pub;
     ros::Subscriber sub;
-    int dataArr[440];
+    int dataArr[441];
     int counter = 0;
     string originalMsg = "";
 
@@ -25,7 +23,7 @@ public:
     {
         pub = nh.advertise<std_msgs::String>("decrypted_message", 1);
         sub = nh.subscribe("encrypted_message", 100, &SubscribeAndPublish::receiveMsg, this);
-        for (int i = 0; i < 440; i++)
+        for (int i = 0; i < 441; i++)
             dataArr[i] = 0;
     }
 
@@ -39,7 +37,7 @@ public:
         // Print the received message on terminal
         // ROS_INFO("[%d]\tReceived, #%d,\ttransform to [%c]", msg->data, counter + 1, dataArr[counter] - 3);
         counter++;
-        if (counter >= 440)
+        if (counter == 440)
             decryptMsg();
     }
 
