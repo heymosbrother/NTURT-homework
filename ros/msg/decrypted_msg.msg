@@ -1,1 +1,1 @@
-String decrypted_msg
+string decryptedResult
