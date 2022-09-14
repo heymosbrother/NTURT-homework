@@ -22,8 +22,8 @@ private:
     ros::NodeHandle nh;
     ros::Publisher pub;
     ros::Subscriber sub;
-    int dataArr[441];
-    int counter = 0;
+    int dataArr[441]; /**<An array to store the received data*/
+    int counter = 0;/**<An index to point out where to store the data*/
     string originalMsg = "";
 
 public:

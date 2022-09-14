@@ -1,0 +1,65 @@
+\hypertarget{classSubscribeAndPublish}{}\doxysection{Subscribe\+And\+Publish Class Reference}
+\label{classSubscribeAndPublish}\index{SubscribeAndPublish@{SubscribeAndPublish}}
+
+
+Class used for handling all publish and subscribe issues, also stores the received data.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSubscribeAndPublish_a00d9646cc59bbd657f7a72c03be42813}{Subscribe\+And\+Publish}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Subscribe And Publish object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSubscribeAndPublish_aea823116c45f8c99f7bfd0ed8138f88d}{receive\+Msg}} (const std\+\_\+msgs\+::\+Int8\+::\+Const\+Ptr \&msg)
+\item 
+void \mbox{\hyperlink{classSubscribeAndPublish_a6127b9c27d5964736f16a47ed3347310}{decrypt\+Msg}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used for handling all publish and subscribe issues, also stores the received data. 
+
+Place the commonly used ros codes in the class scope to make publish and subscribe at the same node easier, further more, make the main function clean and neat. \begin{DoxyAuthor}{Author}
+heymosbrother 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSubscribeAndPublish_a00d9646cc59bbd657f7a72c03be42813}\label{classSubscribeAndPublish_a00d9646cc59bbd657f7a72c03be42813}} 
+\index{SubscribeAndPublish@{SubscribeAndPublish}!SubscribeAndPublish@{SubscribeAndPublish}}
+\index{SubscribeAndPublish@{SubscribeAndPublish}!SubscribeAndPublish@{SubscribeAndPublish}}
+\doxysubsubsection{\texorpdfstring{SubscribeAndPublish()}{SubscribeAndPublish()}}
+{\footnotesize\ttfamily Subscribe\+And\+Publish\+::\+Subscribe\+And\+Publish (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Subscribe And Publish object. 
+
+Initializes and declares publisher and subscriber ROS objects. clean the array where the received data will be put 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSubscribeAndPublish_a6127b9c27d5964736f16a47ed3347310}\label{classSubscribeAndPublish_a6127b9c27d5964736f16a47ed3347310}} 
+\index{SubscribeAndPublish@{SubscribeAndPublish}!decryptMsg@{decryptMsg}}
+\index{decryptMsg@{decryptMsg}!SubscribeAndPublish@{SubscribeAndPublish}}
+\doxysubsubsection{\texorpdfstring{decryptMsg()}{decryptMsg()}}
+{\footnotesize\ttfamily void Subscribe\+And\+Publish\+::decrypt\+Msg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Decrypt the message stored in the global array and then print on the terminal \mbox{\Hypertarget{classSubscribeAndPublish_aea823116c45f8c99f7bfd0ed8138f88d}\label{classSubscribeAndPublish_aea823116c45f8c99f7bfd0ed8138f88d}} 
+\index{SubscribeAndPublish@{SubscribeAndPublish}!receiveMsg@{receiveMsg}}
+\index{receiveMsg@{receiveMsg}!SubscribeAndPublish@{SubscribeAndPublish}}
+\doxysubsubsection{\texorpdfstring{receiveMsg()}{receiveMsg()}}
+{\footnotesize\ttfamily void Subscribe\+And\+Publish\+::receive\+Msg (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::\+Int8\+::\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the message from bag file and store them into the array member 
+\begin{DoxyParams}{Parameters}
+{\em msg} & -\/ the received ASCII number in ROS msg formation \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+decrypt\+\_\+node.\+cpp\end{DoxyCompactItemize}
