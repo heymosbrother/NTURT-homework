@@ -8,6 +8,14 @@
 
 using namespace std;
 
+/**
+ * @brief Class used for handling all publish and subscribe issues, also stores the received data.
+ * 
+ * Place the commonly used ros codes in the class scope to make publish and subscribe 
+ * at the same node easier, further more, make the main function clean and neat.
+ * @author heymosbrother
+ * @date July 2022
+ */
 class SubscribeAndPublish
 {
 private:
@@ -19,6 +27,13 @@ private:
     string originalMsg = "";
 
 public:
+
+    /**
+     * @brief Construct a new Subscribe And Publish object
+     * 
+     * Initializes and declares publisher and subscriber ROS objects.
+     * clean the array where the received data will be put
+     */
     SubscribeAndPublish()
     {
         pub = nh.advertise<std_msgs::String>("decrypted_message", 1);
@@ -28,8 +43,8 @@ public:
     }
 
     /**
-     * @brief Get the message from bag file and store them into the array member
-     * @param msg - the received ASCII number
+     * Get the message from bag file and store them into the array member
+     * @param msg - the received ASCII number in ROS msg formation
      */
     void receiveMsg(const std_msgs::Int8::ConstPtr &msg)
     {
@@ -42,7 +57,7 @@ public:
     }
 
     /**
-     * @brief Decrypt the message stored in the global array and then print on the terminal
+     * Decrypt the message stored in the global array and then print on the terminal
      */
     void decryptMsg()
     {

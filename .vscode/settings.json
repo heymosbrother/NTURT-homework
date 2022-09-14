@@ -1,0 +1,7 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/heymosbrother/catkin_ws/devel_isolated/beginner_tutorials/lib/python3/dist-packages",
+        "/home/heymosbrother/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}
